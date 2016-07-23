@@ -12,11 +12,13 @@ set backspace=indent,eol,start
 set wildmenu
 set incsearch
 set hlsearch
-set mouse=a
+" set mouse=a
 set number
 set ruler
 set laststatus=2
 set scrolloff=8
+
+source $VIMRUNTIME/macros/matchit.vim
 
 " Ctr-a, eで移動
 inoremap <silent> <C-a> <Esc>^<Insert>
@@ -26,6 +28,7 @@ inoremap <silent> <C-e> <Esc>$<Insert><Right>
 set expandtab
 set tabstop=2
 set shiftwidth=2
+
 
 
  " Note: Skip initialization for vim-tiny or vim-small.
@@ -49,6 +52,9 @@ set shiftwidth=2
  NeoBundle 'scrooloose/syntastic.git'
  NeoBundle 'itchyny/vim-cursorword'
 
+ NeoBundle 'plasticboy/vim-markdown'
+ NeoBundle 'kannokanno/previm'
+ NeoBundle 'tyru/open-browser.vim'
  " My Bundles here:
  " Refer to |:NeoBundle-examples|.
  " Note: You don't set neobundle setting in .gvimrc!
@@ -61,3 +67,15 @@ set shiftwidth=2
  " If there are uninstalled bundles found on startup,
  " this will conveniently prompt you to install them.
  NeoBundleCheck
+
+ augroup PrevimSettings
+   autocmd!
+   autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+ augroup END
+
+ let g:previm_open_cmd = 'open -a Safari'
+
+ let g:netrw_nogx = 1
+ nmap gx <Plug>(openbrowser-smart-search)
+ vmap gx <Plug>(openbrowser-smart-search)
+
