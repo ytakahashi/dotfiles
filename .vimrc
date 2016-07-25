@@ -2,8 +2,8 @@ syntax on
 set title
 set ambiwidth=double
 set cindent
-set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+" set list
+" set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set nrformats-=octal
 set hidden
 set history=500
@@ -51,6 +51,7 @@ set shiftwidth=2
  NeoBundle 'scrooloose/nerdtree'
  NeoBundle 'scrooloose/syntastic.git'
  NeoBundle 'itchyny/vim-cursorword'
+ NeoBundle 'yonchu/accelerated-smooth-scroll'
 
  NeoBundle 'plasticboy/vim-markdown'
  NeoBundle 'kannokanno/previm'
