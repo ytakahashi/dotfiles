@@ -39,5 +39,7 @@ alias rm='to_trash'
 alias f="open ."
 
 alias vbp='vim ~/.bash_profile'
+alias vbr='vim ~/.bashrc'
+alias vvr='vim ~/.vimrc'
 alias sbp='source ~/.bash_profile'
 
