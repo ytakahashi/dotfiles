@@ -18,65 +18,65 @@ set ruler
 set laststatus=2
 set scrolloff=8
 
-source $VIMRUNTIME/macros/matchit.vim
-
-" Ctr-a, eで移動
 inoremap <silent> <C-a> <Esc>^<Insert>
 inoremap <silent> <C-e> <Esc>$<Insert><Right>
 
-" tabの設定
 set expandtab
 set tabstop=2
 set shiftwidth=2
 
+set clipboard=unnamed,autoselect
 
+source $VIMRUNTIME/macros/matchit.vim
 
- " Note: Skip initialization for vim-tiny or vim-small.
- if 0 | endif
+inoremap <silent> jj <ESC>
 
- if &compatible
-   set nocompatible               " Be iMproved
- endif
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
 
- " Required:
- set runtimepath^=~/.vim/bundle/neobundle.vim/
+if &compatible
+ set nocompatible               " Be iMproved
+endif
 
- " Required:
- call neobundle#begin(expand('~/.vim/bundle/'))
+" Required:
+set runtimepath^=~/.vim/bundle/neobundle.vim/
 
- " Let NeoBundle manage NeoBundle
- " Required:
- NeoBundleFetch 'Shougo/neobundle.vim'
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
 
- NeoBundle 'scrooloose/nerdtree'
- NeoBundle 'scrooloose/syntastic.git'
- NeoBundle 'itchyny/vim-cursorword'
- NeoBundle 'yonchu/accelerated-smooth-scroll'
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
 
- NeoBundle 'plasticboy/vim-markdown'
- NeoBundle 'kannokanno/previm'
- NeoBundle 'tyru/open-browser.vim'
- " My Bundles here:
- " Refer to |:NeoBundle-examples|.
- " Note: You don't set neobundle setting in .gvimrc!
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'itchyny/vim-cursorword'
+NeoBundle 'yonchu/accelerated-smooth-scroll'
 
- call neobundle#end()
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
 
- " Required:
- filetype plugin indent on
+call neobundle#end()
 
- " If there are uninstalled bundles found on startup,
- " this will conveniently prompt you to install them.
- NeoBundleCheck
+" Required:
+filetype plugin indent on
 
- augroup PrevimSettings
-   autocmd!
-   autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
- augroup END
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
 
- let g:previm_open_cmd = 'open -a Safari'
+augroup PrevimSettings
+ autocmd!
+ autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
 
- let g:netrw_nogx = 1
- nmap gx <Plug>(openbrowser-smart-search)
- vmap gx <Plug>(openbrowser-smart-search)
+let g:previm_open_cmd = 'open -a Safari'
+
+let g:netrw_nogx = 1
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
 
