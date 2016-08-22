@@ -17,6 +17,10 @@ set number
 set ruler
 set laststatus=2
 set scrolloff=8
+set fenc=utf-8
+set showcmd
+set virtualedit=onemore
+
 
 inoremap <silent> <C-a> <Esc>^<Insert>
 inoremap <silent> <C-e> <Esc>$<Insert><Right>
@@ -26,6 +30,8 @@ set tabstop=2
 set shiftwidth=2
 
 set clipboard=unnamed,autoselect
+
+hi LineNr ctermbg=234 ctermfg=94 
 
 source $VIMRUNTIME/macros/matchit.vim
 
