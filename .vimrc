@@ -21,7 +21,6 @@ set fenc=utf-8
 set showcmd
 set virtualedit=onemore
 
-
 inoremap <silent> <C-a> <Esc>^<Insert>
 inoremap <silent> <C-e> <Esc>$<Insert><Right>
 
@@ -30,8 +29,6 @@ set tabstop=2
 set shiftwidth=2
 
 set clipboard=unnamed,autoselect
-
-hi LineNr ctermbg=234 ctermfg=94 
 
 source $VIMRUNTIME/macros/matchit.vim
 
@@ -85,4 +82,7 @@ let g:previm_open_cmd = 'open -a Safari'
 let g:netrw_nogx = 1
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
+
+colorscheme kafka 
+hi LineNr ctermbg=234 ctermfg=94 
 
