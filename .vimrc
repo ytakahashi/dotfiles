@@ -1,4 +1,5 @@
 syntax on
+
 set title
 set ambiwidth=double
 set cindent
@@ -18,21 +19,41 @@ set ruler
 set laststatus=2
 set scrolloff=8
 set fenc=utf-8
+
+" show input command
 set showcmd
+
+" 行末+1
 set virtualedit=onemore
 
-inoremap <silent> <C-a> <Esc>^<Insert>
-inoremap <silent> <C-e> <Esc>$<Insert><Right>
+" clipboard
+set clipboard=unnamed,autoselect
 
+" tab setting
 set expandtab
 set tabstop=2
 set shiftwidth=2
 
-set clipboard=unnamed,autoselect
 
-source $VIMRUNTIME/macros/matchit.vim
-
+" key mapping
+inoremap <silent> <C-a> <Esc>^<Insert>
+inoremap <silent> <C-e> <Esc>$<Insert><Right>
 inoremap <silent> jj <ESC>
+noremap <Space><CR> o<ESC>
+noremap j gj
+noremap k gk
+noremap <S-h> ^
+noremap <S-l> $
+nnoremap ; :
+nnoremap <Space>nt  :NERDTree<CR>
+nnoremap <Space>md  :PrevimOpen<CR>
+nnoremap <Space>c  :tabnew<CR>
+nnoremap <C-n> gt
+nnoremap <C-p> gT
+
+
+let NERDTreeShowHidden = 1
+source $VIMRUNTIME/macros/matchit.vim
 
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
