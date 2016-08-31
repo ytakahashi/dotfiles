@@ -45,12 +45,14 @@ noremap k gk
 noremap <S-h> ^
 noremap <S-l> $
 nnoremap ; :
+nnoremap <space>pa :set paste<CR>
 nnoremap <Space>nt  :NERDTree<CR>
 nnoremap <Space>md  :PrevimOpen<CR>
 nnoremap <Space>c  :tabnew<CR>
 nnoremap <C-n> gt
 nnoremap <C-p> gT
 
+autocmd InsertLeave * set nopaste
 
 let NERDTreeShowHidden = 1
 source $VIMRUNTIME/macros/matchit.vim
@@ -71,6 +73,9 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'Konfekt/FastFold'
+NeoBundle 'rhysd/clever-f.vim'
 
 NeoBundle 'Shougo/neocomplete.vim'
 
@@ -183,6 +188,6 @@ endif
 
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+" let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 
