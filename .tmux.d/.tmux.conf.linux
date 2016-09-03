@@ -1,0 +1,9 @@
+
+# set-option -g default-shell /usr/local/bin/zsh
+
+# copy to clipboard
+bind-key -t vi-copy y copy-pipe "xsel -ib"
+bind-key -t vi-copy Enter copy-pipe "xsel -ib"
+
+bind a display "linux - a"
+
