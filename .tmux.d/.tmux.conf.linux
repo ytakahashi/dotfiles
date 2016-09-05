@@ -1,5 +1,5 @@
 
-# set-option -g default-shell /usr/local/bin/zsh
+set-option -g default-shell /usr/bin/zsh
 
 # copy to clipboard
 bind-key -t vi-copy y copy-pipe "xsel -ib"
