@@ -1,6 +1,6 @@
 syntax on
 
-set title
+set notitle
 set ambiwidth=double
 set cindent
 " set list
@@ -45,7 +45,7 @@ noremap k gk
 noremap <S-h> ^
 noremap <S-l> $
 nnoremap ; :
-nnoremap <space>pa :set paste<CR>
+nnoremap <space>pa  :set paste<CR>
 nnoremap <Space>nt  :NERDTree<CR>
 nnoremap <Space>md  :PrevimOpen<CR>
 nnoremap <Space>c  :tabnew<CR>
@@ -182,12 +182,12 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
-" let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 
