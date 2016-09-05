@@ -28,6 +28,10 @@ set virtualedit=onemore
 
 " clipboard
 set clipboard=unnamed,autoselect
+let OSTYPE = system('uname')
+if OSTYPE == "Linux\n"
+  vmap <C-c> :w !xsel -ib<CR><CR>
+endif
 
 " tab setting
 set expandtab

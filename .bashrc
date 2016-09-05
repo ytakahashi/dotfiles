@@ -1,7 +1,18 @@
+# .bashrc
 
-alias ls='ls -laG'
-alias lst='ls -latG'
-alias lsd='ls -lad $PWD/*'
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+  . /etc/bashrc
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+export PATH=${HOME}/.rbenv/bin:${PATH} && \
+eval "$(rbenv init -)"
+
+
 alias ..="cd .."
 alias up="cd ..; ls"
 
@@ -9,12 +20,8 @@ alias up="cd ..; ls"
 alias ssh_ec2ytakahashi='ssh -l ytakahashi -i "/Users/ytakahashi/.ssh/id_rsa" ec2-54-178-82-69.ap-northeast-1.compute.amazonaws.com'
 
 
-alias git_a='git add .'
-alias git_c_m='git commit -m'
-alias git_p='git push'
-alias git_f='git fetch'
-alias git_m='git merge'
-
+alias z='zsh'
+alias t='tmux'
 
 to_trash() {
   for file in $@
@@ -36,10 +43,25 @@ cdf () {
 
 alias rm='to_trash'
 
-alias f="open ."
 
 alias vbp='vim ~/.bash_profile'
 alias vbr='vim ~/.bashrc'
 alias vvr='vim ~/.vimrc'
 alias sbp='source ~/.bash_profile'
+
+
+case ${OSTYPE} in
+  darwin*)
+    # for Mac
+    export CLICOLOR=1
+    alias ls='ls -alFG'
+    alias lst='ls -altFG'
+    alias f="open ."
+    ;;
+  linux*)
+    # for Linux
+    alias ls='ls -laF --color=auto'
+    alias lst='ls -latF --color=auto'
+    ;;
+esac
 
