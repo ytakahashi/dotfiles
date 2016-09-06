@@ -50,6 +50,7 @@ noremap <S-h> ^
 noremap <S-l> $
 nnoremap ; :
 nnoremap <space>pa  :set paste<CR>
+nnoremap <space>sn  :set number<CR>
 nnoremap <space>nn  :set nonu<CR>
 nnoremap <Space>nt  :NERDTree<CR>
 nnoremap <Space>md  :PrevimOpen<CR>
