@@ -43,11 +43,20 @@ set shiftwidth=2
 inoremap <silent> <C-a> <Esc>^<Insert>
 inoremap <silent> <C-e> <Esc>$<Insert><Right>
 inoremap <silent> jj <ESC>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
 noremap <Space><CR> o<ESC>
-noremap j gj
-noremap k gk
-noremap <S-h> ^
-noremap <S-l> $
+noremap <C-j> i<C-j><ESC>
+nnoremap j gj
+nnoremap k gk
+nnoremap <Space>h  ^
+nnoremap <Space>l  $
+nnoremap <S-h> ^
+nnoremap <S-l> $
+nnoremap <C-h> <Left>x
+nnoremap <C-l> x
 nnoremap ; :
 nnoremap <space>pa  :set paste<CR>
 nnoremap <space>sn  :set number<CR>
