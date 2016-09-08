@@ -53,8 +53,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <Space>h  ^
 nnoremap <Space>l  $
-nnoremap <S-h> ^
-nnoremap <S-l> $
 nnoremap <C-h> <Left>x
 nnoremap <C-l> x
 nnoremap ; :
@@ -64,6 +62,7 @@ nnoremap <space>nn  :set nonu<CR>
 nnoremap <Space>nt  :NERDTree<CR>
 nnoremap <Space>md  :PrevimOpen<CR>
 nnoremap <Space>c  :tabnew<CR>
+nnoremap <Space>w  :w<CR>
 nnoremap <C-n> gt
 nnoremap <C-p> gT
 
@@ -159,7 +158,8 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
+" inoremap <expr><C-l>     neocomplete#complete_common_string()
+inoremap <expr><C-i>     neocomplete#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -172,7 +172,9 @@ endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+
+" disabled C-h
+" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
