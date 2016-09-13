@@ -88,10 +88,11 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'Shougo/neocomplete.vim'
+
 NeoBundle 'Konfekt/FastFold'
 NeoBundle 'rhysd/clever-f.vim'
-
-NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'itchyny/lightline.vim'
 
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic.git'
@@ -208,3 +209,7 @@ let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 
+" lightlinw.vim
+let g:lightline = {
+      \ 'colorscheme': 'solarized'
+      \ }
