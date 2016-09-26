@@ -60,6 +60,7 @@ nnoremap <space>pa  :set paste<CR>
 nnoremap <space>sn  :set number<CR>
 nnoremap <space>nn  :set nonu<CR>
 nnoremap <Space>nt  :NERDTree<CR>
+nnoremap <Space>nh  :noh<CR>
 nnoremap <Space>md  :PrevimOpen<CR>
 nnoremap <Space>c  :tabnew<CR>
 nnoremap <Space>w  :w<CR>
