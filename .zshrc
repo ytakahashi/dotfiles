@@ -69,7 +69,6 @@ alias sudo='sudo '
 alias ssh_ec2ytakahashi='ssh -l ytakahashi -i "/Users/ytakahashi/.ssh/id_rsa" ec2-54-178-82-69.ap-northeast-1.compute.amazonaws.com'
 
 
-
 # OS specific
 case ${OSTYPE} in
 	darwin*)
