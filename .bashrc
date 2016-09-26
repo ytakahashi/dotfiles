@@ -25,6 +25,8 @@ alias ssh_hornet='ssh hornet.rd.scei.sony.co.jp'
 alias ssh_raptor='ssh raptor.rd.scei.sony.co.jp'
 alias ssh_opengrok='ssh 43.22.66.207'
 
+alias pf='echo ssh -L 10080:proxy2.hq.scei.sony.co.jp:10080 yutakahashi@43.2.136.60;ssh -L 10080:proxy2.hq.scei.sony.co.jp:10080 yutakahashi@43.2.136.60'
+
 
 alias z='zsh'
 alias t='tmux'
