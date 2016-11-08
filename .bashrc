@@ -51,7 +51,17 @@ alias vbr='vim ~/.bashrc'
 alias vvr='vim ~/.vimrc'
 alias sbp='source ~/.bash_profile'
 
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias up="cd ..; ls"
+alias h='fc -lt '%F %T' 1'
+alias lsd='ls -lad $PWD/*'
+alias rm='to_trash'
+alias sudo='sudo '
 
+
+
+# OS specific
 case ${OSTYPE} in
   darwin*)
     # for Mac
