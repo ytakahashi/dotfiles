@@ -1,5 +1,7 @@
 # .bashrc
 
+export MAVEN_OPTS='-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dhttps.proxyHost=proxy.hq.scei.sony.co.jp -Dhttps.proxyPort=10080 -Dhttp.proxyHost=proxy.hq.scei.sony.co.jp -Dhttp.proxyPort=10080'
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
   . /etc/bashrc
@@ -17,6 +19,7 @@ alias ..="cd .."
 alias up="cd ..; ls"
 
 alias prox='export ALL_PROXY=proxy.sonycity.sony.co.jp:10080'
+alias prox2='export ALL_PROXY=proxy2.hq.scei.sony.co.jp:10080'
 
 alias ssh_ec2ytakahashi='ssh -l ytakahashi -i "/Users/ytakahashi/.ssh/id_rsa" ec2-54-178-82-69.ap-northeast-1.compute.amazonaws.com'
 alias ssh_ytakahashi_linux='ssh -l ytakahashi 43.22.66.62'

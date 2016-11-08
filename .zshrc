@@ -63,6 +63,7 @@ alias ....='cd ../../..'
 alias up="cd ..; ls"
 alias h='fc -lt '%F %T' 1'
 alias prox='export ALL_PROXY=proxy.sonycity.sony.co.jp:10080'
+alias prox2='export ALL_PROXY=proxy2.hq.scei.sony.co.jp:10080'
 alias lsd='ls -lad $PWD/*'
 alias rm='to_trash'
 alias sudo='sudo '
