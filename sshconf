@@ -1,0 +1,6 @@
+
+Host dns01
+  HostName 43.22.66.201 
+  Port 22
+  User ytakahashi
+
