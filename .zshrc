@@ -1,6 +1,6 @@
 # .zshrc
 
-source ~/.bashrc
+source ~/dotfiles/.shrc
 
 bindkey -e
 bindkey "^U" backward-kill-line
