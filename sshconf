@@ -4,3 +4,27 @@ Host dns01
   Port 22
   User ytakahashi
 
+Host raptor
+  HostName raptor.rd.scei.sony.co.jp
+  Port 22
+  User ytakahashi
+
+Host hornet
+  HostName hornet.rd.scei.sony.co.jp
+  Port 22
+  User ytakahashi
+
+Host opengrok
+  HostName 43.22.66.207
+  Port 22
+  User ytakahashi
+
+Host q1-tournamentAdmin
+  HostName evnt-tadm01.dev.snc.diva.rs.scei.sony.co.jp
+  Port 22
+  User ytakahashi
+
+Host dev-eventsClient
+  HostName lab-vhost-98.rd.scei.sony.co.jp
+  Port 22
+  User root
