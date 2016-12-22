@@ -1,3 +1,62 @@
+Host lab-kvm-01
+  HostName 43.22.66.71
+  Port 22
+  User root
+
+Host lab-kvm-02
+  HostName 43.22.66.72
+  Port 22
+  User root
+
+Host lab-kvm-03
+  HostName 43.22.66.73
+  Port 22
+  User root
+
+Host lab-kvm-04
+  HostName 43.22.66.74
+  Port 22
+  User root
+
+Host lab-kvm-05
+  HostName 43.22.66.75
+  Port 22
+  User root
+
+Host lab-kvm-06
+  HostName 43.22.66.76
+  Port 22
+  User root
+
+Host lab-kvm-07
+  HostName 43.22.66.77
+  Port 22
+  User root
+
+Host lab-kvm-09
+  HostName 43.22.66.79
+  Port 22
+  User root
+
+Host lab-kvm-11
+  HostName 43.22.66.81
+  Port 22
+  User root
+
+Host lab-kvm-12
+  HostName 43.22.66.82
+  Port 22
+  User root
+
+Host lab-kvm-13
+  HostName 43.22.66.83
+  Port 22
+  User root
+
+Host lab-kvm-14
+  HostName 43.22.66.84
+  Port 22
+  User root
 
 Host dns01
   HostName 43.22.66.201 
@@ -19,12 +78,60 @@ Host opengrok
   Port 22
   User ytakahashi
 
-Host q1-tournamentAdmin
-  HostName evnt-tadm01.dev.snc.diva.rs.scei.sony.co.jp
+Host tournamentAdmin-q1
+  HostName 10.202.18.184
   Port 22
   User ytakahashi
 
-Host dev-eventsClient
+Host eventsClient-dev
   HostName lab-vhost-98.rd.scei.sony.co.jp
   Port 22
   User root
+
+Host eventsClientEdge-q1
+  HostName 10.202.184.212
+  Port 22
+  User ytakahashi
+
+Host eventsIndexer-q1
+  HostName 10.202.185.181
+  Port 22
+  User ytakahashi
+
+Host eventsInner-q1
+  HostName 10.202.185.180
+  Port 22
+  User ytakahashi
+
+Host eventsNotifier-q1
+  HostName 10.202.185.182
+  Port 22
+  User ytakahashi
+
+Host ohma01
+  HostName ohma01.snc.infr.rs.scei.sony.co.jp
+  Port 22
+  User centos
+  IdentityFile ~/.ssh/13F_infra_id_rsa
+  
+Host tournamentAdmin-sp-int-darkside
+  HostName evnt-tadm-sp-int-darkside01.etc.aws.diva.rs.scei.sony.co.jp
+  Port 22
+  User ytakahashi
+
+Host eventsClientEdge-sp-int-darkside
+  HostName evnt-edge-sp-int-darkside01.etc.aws.diva.rs.scei.sony.co.jp
+  Port 22
+  User ytakahashi
+
+Host eventsIndexer-sp-int-darkside
+  HostName evnt-idx-sp-int-darkside01.etc.aws.diva.rs.scei.sony.co.jp
+  Port 22
+  User ytakahashi
+
+Host eventsNotifier-sp-int-darkside
+  HostName evnt-ntf-sp-int-darkside.etc.aws.diva.rs.scei.sony.co.jp
+  Port 22
+  User ytakahashi
+
+
