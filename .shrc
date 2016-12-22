@@ -21,13 +21,6 @@ alias pf='echo ssh -L 10080:proxy2.hq.scei.sony.co.jp:10080 yutakahashi@43.2.136
 alias z='zsh'
 alias t='tmux'
 
-to_trash() {
-  for file in $@
-  do
-    mv $file ~/.Trash
-  done
-}
-
 cdf () {
   target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
   if [ "$target" != "" ]
@@ -39,7 +32,6 @@ cdf () {
   fi
 }
 
-alias rm='to_trash'
 
 
 alias vbp='vim ~/.bash_profile'
@@ -54,7 +46,6 @@ alias h='fc -lt '%F %T' 1'
 alias prox='export ALL_PROXY=proxy.sonycity.sony.co.jp:10080'
 alias prox2='export ALL_PROXY=proxy2.hq.scei.sony.co.jp:10080'
 alias lsd='ls -lad $PWD/*'
-alias rm='to_trash'
 alias sudo='sudo '
 
 alias ssh_ec2ytakahashi='ssh -l ytakahashi -i "/Users/ytakahashi/.ssh/id_rsa" ec2-54-178-82-69.ap-northeast-1.compute.amazonaws.com'alias ssh_ytakahashi_linux='ssh -l ytakahashi 43.22.66.62'
