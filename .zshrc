@@ -44,7 +44,9 @@ setopt share_history
 
 
 # prompt (left)
-PROMPT="%{${fg[white]}%}[%n %1~]%#  %{${reset_color}%}"
+PROMPT="
+%{${fg[white]}%}[%n %2~]
+%# %{${reset_color}%}"
 
 
 # prompt (right)
