@@ -134,4 +134,21 @@ Host eventsNotifier-sp-int-darkside
   Port 22
   User ytakahashi
 
+Host install-server-TYO
+  HostName 10.143.0.1
+  Port 22
+  User ytakahashi
+  IdentityFile ~/.ssh/id_rsa
+
+Host install-server-SJC
+  HostName 10.133.102.1
+  Port 22
+  User ytakahashi
+  IdentityFile ~/.ssh/id_rsa
+
+Host install-server-LAV
+  HostName 10.136.192.1
+  Port 22
+  User ytakahashi
+  IdentityFile ~/.ssh/id_rsa
 
