@@ -6,7 +6,6 @@ bindkey -e
 bindkey "^U" backward-kill-line
 
 setopt correct
-setopt ignore_eof
 
 autoload -Uz colors
 colors
