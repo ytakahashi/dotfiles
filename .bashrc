@@ -12,5 +12,4 @@ source ~/dotfiles/.shrc
 
 # User specific aliases and functions
 export PATH=${HOME}/.rbenv/bin:${PATH} && \
-eval "$(rbenv init -)"
 

@@ -10,6 +10,10 @@ setopt correct
 autoload -Uz colors
 colors
 
+# rbenv
+if [ -x "`which rbenv `" ]; then
+  eval "$(rbenv init -)"
+fi 
 
 # completion
 autoload -U compinit; compinit
