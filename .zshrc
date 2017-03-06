@@ -11,7 +11,7 @@ autoload -Uz colors
 colors
 
 # rbenv
-if [ -x "`which rbenv `" ]; then
+if type rbenv > /dev/null 2>&1; then
   eval "$(rbenv init -)"
 fi 
 
