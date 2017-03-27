@@ -2,6 +2,8 @@
 
 source ~/dotfiles/.shrc
 
+stty stop undef
+
 bindkey -e
 bindkey "^U" backward-kill-line
 
