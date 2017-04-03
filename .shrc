@@ -43,11 +43,13 @@ case ${OSTYPE} in
   darwin*)
     # for Mac
     export CLICOLOR=1
+    alias ls='ls -aFG'
     alias lst='ls -altFG'
     alias f="open ."
     ;;
   linux*)
     # for Linux
+    alias ls='ls -a --color=auto'
     alias lst='ls -latF --color=auto'
     ;;
 esac
