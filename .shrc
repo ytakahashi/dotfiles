@@ -1,5 +1,5 @@
 
-export MAVEN_OPTS='-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dhttps.proxyHost=proxy.hq.scei.sony.co.jp -Dhttps.proxyPort=10080 -Dhttp.proxyHost=proxy.hq.scei.sony.co.jp -Dhttp.proxyPort=10080'
+export MAVEN_OPTS='-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dhttps.proxyHost=localhost -Dhttps.proxyPort=10080 -Dhttp.proxyHost=localhost -Dhttp.proxyPort=10080'
 
 alias ..="cd .."
 alias up="cd ..; ls"
@@ -33,6 +33,7 @@ alias ....='cd ../../..'
 alias up="cd ..; ls"
 alias prox='export ALL_PROXY=proxy.sonycity.sony.co.jp:10080'
 alias prox2='export ALL_PROXY=proxy2.hq.scei.sony.co.jp:10080'
+alias local_proxy='export ALL_PROXY=localhost:10080'
 alias lsd='ls -lad $PWD/*'
 alias sudo='sudo '
 
