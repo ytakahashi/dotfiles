@@ -4,11 +4,6 @@ export MAVEN_OPTS='-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.a
 alias ..="cd .."
 alias up="cd ..; ls"
 
-alias prox='export ALL_PROXY=proxy.sonycity.sony.co.jp:10080'
-alias prox2='export ALL_PROXY=proxy2.hq.scei.sony.co.jp:10080'
-
-alias pf='echo ssh -L 10080:proxy2.hq.scei.sony.co.jp:10080 yutakahashi@43.2.136.60;ssh -L 10080:proxy2.hq.scei.sony.co.jp:10080 yutakahashi@43.2.136.60'
-
 alias z='zsh'
 alias t='tmux'
 
@@ -23,6 +18,12 @@ cdf () {
   fi
 }
 
+function mkcd() {
+  mkdir $1;
+  cd $1;
+}
+alias mkcd=mkcd
+
 alias vbp='vim ~/.bash_profile'
 alias vbr='vim ~/.bashrc'
 alias vvr='vim ~/.vimrc'
@@ -36,7 +37,7 @@ alias prox2='export ALL_PROXY=proxy2.hq.scei.sony.co.jp:10080'
 alias local_proxy='export ALL_PROXY=localhost:10080'
 alias lsd='ls -lad $PWD/*'
 alias sudo='sudo '
-
+alias ras='cd /Users/ytakahashi/Documents/snei-github/ras-command;./ras.py'
 alias pf='echo ssh -L 10080:proxy2.hq.scei.sony.co.jp:10080 yutakahashi@43.2.136.60;ssh -L 10080:proxy2.hq.scei.sony.co.jp:10080 yutakahashi@43.2.136.60'
 
 # OS specific
