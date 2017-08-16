@@ -1,6 +1,13 @@
 
 export MAVEN_OPTS='-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dhttps.proxyHost=localhost -Dhttps.proxyPort=10080 -Dhttp.proxyHost=localhost -Dhttp.proxyPort=10080'
 
+[[ -d ~/.rbenv  ]] && \
+    export PATH=${HOME}/.rbenv/bin:${PATH} && \
+    eval "$(rbenv init -)"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
 alias ..="cd .."
 alias up="cd ..; ls"
 
