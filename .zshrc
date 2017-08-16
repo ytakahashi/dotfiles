@@ -89,4 +89,3 @@ function pwd-clip() {
     echo -n $PWD | ${=copyToClipboard}
 }
 
-
