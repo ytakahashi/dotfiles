@@ -1,3 +1,13 @@
+Host gateway
+  HostName 43.2.136.60
+  User yutakahashi
+
+Host takahashi-linux
+  HostName 43.22.66.62
+  User ytakahashi
+  ProxyCommand ssh gateway nc %h %p
+
+
 Host lab-kvm-01
   HostName 43.22.66.71
   Port 22
