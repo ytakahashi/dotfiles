@@ -7,6 +7,8 @@ Host takahashi-linux
   User ytakahashi
   ProxyCommand ssh gateway nc %h %p
 
+Host *.scei.sony.co.jp
+  IdentityFile ~/.ssh/id_rsa_takahashi_linux
 
 Host lab-kvm-01
   HostName 43.22.66.71
@@ -88,62 +90,12 @@ Host opengrok
   Port 22
   User ytakahashi
 
-Host tournamentAdmin-q1
-  HostName 10.202.18.184
-  Port 22
-  User ytakahashi
-
-Host eventsClient-dev
-  HostName lab-vhost-98.rd.scei.sony.co.jp
-  Port 22
-  User root
-
-Host eventsClientEdge-q1
-  HostName 10.202.184.212
-  Port 22
-  User ytakahashi
-
-Host eventsIndexer-q1
-  HostName 10.202.185.181
-  Port 22
-  User ytakahashi
-
-Host eventsInner-q1
-  HostName 10.202.185.180
-  Port 22
-  User ytakahashi
-
-Host eventsNotifier-q1
-  HostName 10.202.185.182
-  Port 22
-  User ytakahashi
-
 Host ohma01
   HostName ohma01.snc.infr.rs.scei.sony.co.jp
   Port 22
   User centos
   IdentityFile ~/.ssh/13F_infra_id_rsa
   
-Host tournamentAdmin-sp-int-darkside
-  HostName evnt-tadm-sp-int-darkside01.etc.aws.diva.rs.scei.sony.co.jp
-  Port 22
-  User ytakahashi
-
-Host eventsClientEdge-sp-int-darkside
-  HostName evnt-edge-sp-int-darkside01.etc.aws.diva.rs.scei.sony.co.jp
-  Port 22
-  User ytakahashi
-
-Host eventsIndexer-sp-int-darkside
-  HostName evnt-idx-sp-int-darkside01.etc.aws.diva.rs.scei.sony.co.jp
-  Port 22
-  User ytakahashi
-
-Host eventsNotifier-sp-int-darkside
-  HostName evnt-ntf-sp-int-darkside.etc.aws.diva.rs.scei.sony.co.jp
-  Port 22
-  User ytakahashi
-
 Host install-server-TYO
   HostName 10.143.0.1
   Port 22
