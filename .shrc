@@ -56,8 +56,8 @@ case ${OSTYPE} in
     alias et_opt='cd /Users/ytakahashi/Documents/files;java -jar et-otp-1.2.jar'
     alias pf='echo ssh -L 10080:proxy2.hq.scei.sony.co.jp:10080 yutakahashi@43.2.136.60;ssh -L 10080:proxy2.hq.scei.sony.co.jp:10080 yutakahashi@43.2.136.60'
     alias desktop='echo ssh -L 13389:43.2.130.43:3389 yutakahashi@43.2.136.60;ssh -L 13389:43.2.130.43:3389 yutakahashi@43.2.136.60'
-    alias ras='cd /Users/ytakahashi/Documents/snei-github/ras-command;./ras.py'
-    alias ras_close='cd /Users/ytakahashi/Documents/snei-github/ras-command;./ras.py --finish'
+    alias ras='cd /Users/ytakahashi/PycharmProjects/ras;./ras.py'
+    alias ras_close='cd /Users/ytakahashi/PycharmProjects/ras;./ras.py --finish'
     alias boko='cd /Users/ytakahashi/Documents/snei-github/ssh-public-key/;python boko.py'
     ;;
   linux*)
