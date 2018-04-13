@@ -2,6 +2,10 @@
 
 source ~/dotfiles/.shrc
 
+source ~/dotfiles/zsh/aliases.zsh
+
+source ~/dotfiles/zsh/functions.zsh
+
 stty stop undef
 
 bindkey -e
@@ -73,26 +77,4 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
-
-# shell function
-function pwd-clip() {
-    local copyToClipboard
-
-    if which pbcopy >/dev/null 2>&1 ; then
-        # Mac
-        copyToClipboard='pbcopy'
-    elif which xsel >/dev/null 2>&1 ; then
-        # Linux
-        copyToClipboard='xsel --input --clipboard'
-    elif which putclip >/dev/null 2>&1 ; then
-        # Cygwin
-        copyToClipboard='putclip'
-    else
-        copyToClipboard='cat'
-    fi
-
-    # ${=VAR} enables SH_WORD_SPLIT option
-    # so ${=VAR] is splited in words, for example "a" "b" "c"
-    echo -n $PWD | ${=copyToClipboard}
-}
 
