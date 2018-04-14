@@ -8,6 +8,8 @@ zplug "b4b4r07/enhancd", use:enhancd.sh
 
 zplug "zsh-users/zsh-autosuggestions"
 
+zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
+
 if ! zplug check --verbose; then
   printf 'Install? [y/N]: '
   if read -q; then
