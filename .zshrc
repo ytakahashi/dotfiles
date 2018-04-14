@@ -6,6 +6,8 @@ source ~/dotfiles/zsh/aliases.zsh
 
 source ~/dotfiles/zsh/functions.zsh
 
+source ~/dotfiles/zsh/zplug.zsh
+
 stty stop undef
 
 bindkey -e

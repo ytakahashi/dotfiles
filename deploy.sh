@@ -4,7 +4,6 @@ source lib/color.sh
 
 prepare() {
   mkdir -p ~/.vim/colors
-  mkdir -p ~/foo/bar
 }
 
 readonly DOT_FILES=( 
@@ -26,7 +25,6 @@ echo "Deploy *************************************"
 
 for file in ${DOT_FILES[@]}; do
   dest=${HOME}/${file}
-  echo "${file} => ${dest}"
   if [ -e ${dest} ]; then
     ok "ok: [ ${dest} ]"
     let ++count_ok
@@ -42,3 +40,4 @@ echo "Play Recap *********************************"
 
 ok "ok=${count_ok}"
 changed "changed=${count_changed}"
+
