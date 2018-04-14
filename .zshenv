@@ -9,7 +9,9 @@ export PATH=$M3:$PATH
 export PATH=/usr/local/bin:$PATH
 
 export PATH="$HOME/bin:$PATH"
-export PATH=/usr/local/bin:$PATH
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 export PATH=$PATH:"$HOME/.nodebrew/current/bin"
 
