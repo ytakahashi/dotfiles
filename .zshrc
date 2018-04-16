@@ -6,6 +6,8 @@ source ~/dotfiles/zsh/aliases.zsh
 
 source ~/dotfiles/zsh/functions.zsh
 
+source ~/dotfiles/zsh/zplug.zsh
+
 stty stop undef
 
 bindkey -e
@@ -18,8 +20,6 @@ colors
 
 # pyenv
 if type pyenv > /dev/null 2>&1; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
 fi
 

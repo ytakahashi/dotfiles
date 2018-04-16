@@ -9,7 +9,18 @@ export PATH=$M3:$PATH
 export PATH=/usr/local/bin:$PATH
 
 export PATH="$HOME/bin:$PATH"
-export PATH=/usr/local/bin:$PATH
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 export PATH=$PATH:"$HOME/.nodebrew/current/bin"
+
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+
+export FZF_DEFAULT_OPTS='
+  --height 40% --reverse --border
+  --color fg:188,bg:233,hl:103,fg+:222,bg+:234,hl+:104
+  --color info:183,prompt:110,spinner:107,pointer:167,marker:215
+'
 
