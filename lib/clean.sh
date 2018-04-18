@@ -7,7 +7,9 @@ NORMAL_FILE="normal_file"
 DIRECTORY="directory"
 NOT_FOUND="not_found"
 
-BK_DIR="~/.gomi"
+BK_DIR="${HOME}/.tmp"
+
+mkdir -p ${BK_DIR}
 
 check_file_type () {
   if [ -e ${1} ]; then
@@ -27,18 +29,15 @@ check_file_type () {
 
 
 remove_symbolic_link () {
-  info "unlink ${1}"
-  # unlink ${1}
+  unlink ${1}
 }
 
 remove_normal_file () {
-  info "mv ${1} ${BK_DIR}"
-  # mv ${1} ${BK_DIR}
+  mv ${1} ${BK_DIR}
 }
 
 remove_directory () {
-  info "mv -f ${1} ${BK_DIR}"
-  # mv -r ${1} ${BK_DIR}
+  mv -r ${1} ${BK_DIR}
 }
 
 count_ok=0
@@ -67,3 +66,4 @@ echo "Play Recap *********************************"
 
 ok "ok=${count_ok}"
 changed "changed=${count_changed}"
+

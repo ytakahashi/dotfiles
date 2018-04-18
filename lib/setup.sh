@@ -27,7 +27,6 @@ echo "Install ************************************"
 
 for i in "$@"
 do
-  info "install ${i}"
   DIR=`home_${i}`
 
   if [ ! -e ${DIR} ]; then
