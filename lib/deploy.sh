@@ -6,15 +6,6 @@ prepare() {
   mkdir -p ~/.vim/colors
 }
 
-readonly DOT_FILES=( 
-  .vimrc 
-  .vim/colors/kafka.vim
-  .zshrc 
-  .zshenv 
-  .tmux.conf
-  .gitignore_global
-)
-
 count_ok=0
 count_changed=0
 
@@ -23,7 +14,8 @@ prepare
 echo ""
 echo "Deploy *************************************"
 
-for file in ${DOT_FILES[@]}; do
+for file in "$@"
+do
   dest=${HOME}/${file}
   if [ -e ${dest} ]; then
     ok "ok: [ ${dest} ]"

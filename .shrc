@@ -1,5 +1,0 @@
-
-export MAVEN_OPTS='-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dhttps.proxyHost=localhost -Dhttps.proxyPort=10080 -Dhttp.proxyHost=localhost -Dhttp.proxyPort=10080'
-
-
-
