@@ -7,7 +7,7 @@ NORMAL_FILE="normal_file"
 DIRECTORY="directory"
 NOT_FOUND="not_found"
 
-BK_DIR="${HOME}/.tmp"
+BK_DIR="${HOME}/tmp"
 
 mkdir -p ${BK_DIR}
 

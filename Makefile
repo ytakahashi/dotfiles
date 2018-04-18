@@ -1,6 +1,7 @@
 SHELL := /bin/bash
-LIGHT_CYAN := \e[96;1m
-COLOR_OFF := \e[m
+LIGHT_CYAN := \033[96;1m
+LIGHT_MAGENDA := \033[95;1m
+COLOR_OFF := \033[m
 
 DOT_FILES := \
 .vimrc \
@@ -21,28 +22,29 @@ dotfiles: setup deploy ## do setup and deploy
 
 .PHONY: setup
 setup: ## set up plugin managers listed by "make list"
-	@$(SHELL) lib/setup.sh $(PUGIN_MANAGER)
+	@$(SHELL) $(CURDIR)/lib/setup.sh $(PUGIN_MANAGER)
 
 .PHONY: deploy
-deploy: ## create symbolic links listed by "make list"
-	@$(SHELL) lib/deploy.sh $(DOT_FILES)
+deploy: ## create symbolic links of dotfiles listed by "make list"
+	@$(SHELL) $(CURDIR)/lib/deploy.sh $(DOT_FILES)
 
 .PHONY: clean
-clean: ## delete existing symbolic links and backup existing files to "~/.tmp/" directory
-	@$(SHELL) lib/clean.sh $(DOT_FILES)
+clean: ## delete existing symbolic links and backup existing files to "~/tmp" directory
+	@$(SHELL) $(CURDIR)/lib/clean.sh $(DOT_FILES)
 
 .PHONY: list
 list: ## show dotfiles and plugin managers to be deployed/installed
 	@echo ""
-	@echo -e "$(LIGHT_CYAN)------------- Dotfiles -------------$(COLOR_OFF)"
+	@echo -e "$(LIGHT_MAGENDA)------------- Dotfiles -------------$(COLOR_OFF)"
 	@$(foreach val, $(DOT_FILES), echo $(val);)
-	@echo -e "$(LIGHT_CYAN)------------------------------------$(COLOR_OFF)"
+	@echo -e "$(LIGHT_MAGENDA)------------------------------------$(COLOR_OFF)"
 	@echo ""
-	@echo -e "$(LIGHT_CYAN)---------- Plugin Manager ----------$(COLOR_OFF)"
+	@echo -e "$(LIGHT_MAGENDA)---------- Plugin Manager ----------$(COLOR_OFF)"
 	@$(foreach val, $(PUGIN_MANAGER), echo $(val);)
-	@echo -e "$(LIGHT_CYAN)------------------------------------$(COLOR_OFF)"
+	@echo -e "$(LIGHT_MAGENDA)------------------------------------$(COLOR_OFF)"
 
 .PHONY: help
 help: ## show how to use
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36;1m%-30s\033[0m %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+	| awk 'BEGIN {FS = ":.*?## "}; {printf "$(LIGHT_CYAN)%-9s$(COLOR_OFF):  %s\n", $$1, $$2}'
 
