@@ -1,7 +1,5 @@
 # .zshrc
 
-source ~/dotfiles/.shrc
-
 source ~/dotfiles/zsh/aliases.zsh
 
 source ~/dotfiles/zsh/functions.zsh
