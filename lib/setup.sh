@@ -5,11 +5,6 @@ source lib/color.sh
 count_ok=0
 count_changed=0
 
-readonly INSTALL=(
-  neobundle
-  zplug
-)
-
 install_neobundle () {
   mkdir -p ~/.vim/bundle
   git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
@@ -30,8 +25,8 @@ home_zplug() {
 echo ""
 echo "Install ************************************"
 
-for i in ${INSTALL[@]}; do
-  info "install ${i}"
+for i in "$@"
+do
   DIR=`home_${i}`
 
   if [ ! -e ${DIR} ]; then
