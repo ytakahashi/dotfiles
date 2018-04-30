@@ -12,6 +12,8 @@ alias ll='ls -la'
 alias lsd='ls -lad $PWD/*'
 alias sudo='sudo '
 
+alias gget='ghq get'
+
 # OS specific
 case ${OSTYPE} in
   darwin*)
