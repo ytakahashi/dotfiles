@@ -1,6 +1,7 @@
 # shell functions
 
 cdf () {
+  local target
   target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
   if [ "$target" != "" ]
   then
@@ -11,13 +12,12 @@ cdf () {
   fi
 }
 
-function mkcd() {
+mkcd() {
   mkdir $1;
   cd $1;
 }
 
-
-function pwd-clip() {
+pwd-clip() {
     local copyToClipboard
 
     if which pbcopy >/dev/null 2>&1 ; then
@@ -42,62 +42,110 @@ h() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 }
 
+##
+# vim
+##
 fv() {
-  local FILE_NAME
-  FILE_NAME=$(find . -type d -name .git -prune -o -type f | fzf)
-  if [ -n "${FILE_NAME}" ]; then
-    vim ${FILE_NAME}
+  local file depth
+  depth=${1:-2}
+
+  file=$(
+    find . -type d -name .git -prune -o -type f -maxdepth ${depth} |
+    fzf +m
+  )
+
+  if [[ -z "$file" ]]; then
+      return 0
   fi
+
+  print -z "vim $file"
 }
 
-fd() {
-  local DIR
-  DIR=`find * -maxdepth 0 -type d -print 2> /dev/null | fzf`
-  cd "$DIR"
+##
+# Open browser of ghq-managed git remote repositories.
+##
+browse() {
+  local dir protocol browser
+  dir=$(ghq list | fzf +m)
+
+  protocol="https://"
+
+  browser=${1:-"Safari"}
+
+  if [[ -z "$dir" ]]; then
+      return 0
+  fi
+
+  print -z "open -a $browser $protocol$dir"
+
 }
 
-fda() {
+##
+# interactive cd to ghq-managed git local repositories.
+##
+gd() {
   local dir
-  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+  dir=$(ghq list -p | fzf +m)
+
+  if [[ -z "$dir" ]]; then
+      return 0
+  fi
+
+  cd $dir
+  pwd
 }
 
-fbr() {
-  local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-           fzf -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+##
+# interactive cd to recorded directory.
+##
+pd() {
+  local dir
+  dir=$(dirs -lp | fzf +m)
+
+  if [[ -z "$dir" ]]; then
+      return 0
+  fi
+
+  cd "$dir"
+  pwd
 }
 
-fdiff() {
-  local out q n addfiles
-  while out=$(
-      git status --short |
-      awk '{if (substr($0,2,1) !~ / /) print $2}' |
-      fzf --multi --exit-0 --expect=ctrl-d); do
-    q=$(head -1 <<< "$out")
-    n=$[$(wc -l <<< "$out") - 1]
-    addfiles=(`echo $(tail "-$n" <<< "$out")`)
-    [[ -z "$addfiles" ]] && continue
-    git diff --color=always $addfiles | less -R
-  done
+##
+# interactive cd to selected directory under current directory
+##
+fd() {
+  local dir depth
+  depth=${1:-1}
+
+  dir=$(
+    find . -path '*/\.*' -prune -o -type d -print -maxdepth ${depth} |
+    fzf +m
+  )
+
+  if [[ -z "$dir" ]]; then
+    return 0
+  fi
+
+  cd $dir
+  pwd
 }
 
-fadd() {
-  local out q n addfiles
-  while out=$(
-      git status --short |
-      awk '{if (substr($0,2,1) !~ / /) print $2}' |
-      fzf --multi --exit-0 --expect=ctrl-d); do
-    q=$(head -1 <<< "$out")
-    n=$[$(wc -l <<< "$out") - 1]
-    addfiles=(`echo $(tail "-$n" <<< "$out")`)
-    [[ -z "$addfiles" ]] && continue
-    if [ "$q" = ctrl-d ]; then
-      git diff --color=always $addfiles | less -R
-    else
-      git add $addfiles
-    fi
-  done
-}
+##
+# interactive ssh to a host listed in ~/.ssh/config
+##
+fssh () {
+  local host
+  host=$(
+    grep "Host " ~/.ssh/config | 
+    grep -v '*' | 
+    awk {'print $2'} | 
+    fzf +m
+  )
 
+  if [[ -z "$host" ]]; then
+    return 0
+  fi
+
+  print -z "ssh $host"
+
+}

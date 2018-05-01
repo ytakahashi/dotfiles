@@ -8,8 +8,11 @@ alias up="cd ..; ls"
 alias z='zsh'
 alias t='tmux'
 
+alias ll='ls -la'
 alias lsd='ls -lad $PWD/*'
 alias sudo='sudo '
+
+alias gget='ghq get'
 
 # OS specific
 case ${OSTYPE} in
