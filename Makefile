@@ -9,7 +9,8 @@ DOT_FILES := \
 .zshrc \
 .zshenv \
 .tmux.conf \
-.gitignore_global
+.gitignore_global \
+.hyper.js
 
 PUGIN_MANAGER := \
 neobundle \
