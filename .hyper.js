@@ -21,8 +21,7 @@ module.exports = {
     fontWeightBold: 'bold',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    // cursorColor: 'rgba(248,28,229,0.8)',
-    cursorColor: 'E6E6E6',
+    cursorColor: 'rgba(248,68,239,0.9)',
 
     // terminal text color under BLOCK cursor
     cursorAccentColor: '#000',
@@ -38,7 +37,7 @@ module.exports = {
 
     // terminal background color
     // opacity is only supported on macOS
-    backgroundColor: 'rgba(13,8,10,0.85 )',
+    backgroundColor: 'rgba(13,8,10,0.85)',
 
     // terminal selection color
     selectionColor: 'rgba(248,28,229,0.3)',
@@ -139,7 +138,9 @@ module.exports = {
       border: true,
       tabIconsColored: true,
       activityColor: 'salmon'
-    }
+    },
+
+    confirmQuit: true
   },
 
   // a list of plugins to fetch and install from npm
@@ -151,7 +152,9 @@ module.exports = {
   plugins: [
     'hyper-statusline',
     'hyper-search',
-    'hyper-tabs-enhanced'
+    'hyper-tabs-enhanced',
+    'hyper-quit',
+    'hyper-confirm'
   ],
 
   // in development, you can create a directory under
