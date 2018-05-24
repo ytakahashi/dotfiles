@@ -26,6 +26,11 @@ if type rbenv > /dev/null 2>&1; then
   eval "$(rbenv init -)"
 fi 
 
+# sdkman
+if [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
+  source "$SDKMAN_DIR/bin/sdkman-init.sh"
+fi
+
 # completion
 autoload -U compinit; compinit
 zstyle ':completion:*:default' menu select=1
