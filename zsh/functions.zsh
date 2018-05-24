@@ -96,6 +96,21 @@ gd() {
 }
 
 ##
+# interactive cd to go src repositories.
+##
+gdgo() {
+  local dir
+  dir=$(find $GOPATH/src -maxdepth 3 -mindepth 3  -type d | fzf +m)
+
+  if [[ -z "$dir" ]]; then
+      return 0
+  fi
+
+  cd $dir
+  pwd
+}
+
+##
 # interactive cd to recorded directory.
 ##
 pd() {
