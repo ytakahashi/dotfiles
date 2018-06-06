@@ -66,17 +66,22 @@ fv() {
 ##
 browse() {
   local dir protocol browser
-  dir=$(ghq list | fzf +m)
-
+  
   protocol="https://"
 
-  browser=${1:-"Safari"}
+  if [ -n "$1" -a "$1" = "." ]; then
+    browser=${2:-"Safari"}
+    dir=$(ghq list -e ${${$(pwd)/$(git rev-parse --show-cdup)#*/}##*/})
+  else
+    browser=${1:-"Safari"}
+    dir=$(ghq list | fzf +m)
+  fi
 
   if [[ -z "$dir" ]]; then
       return 0
   fi
 
-  print -z "open -a $browser $protocol$dir"
+  open -a $browser $protocol$dir
 
 }
 
@@ -164,15 +169,3 @@ fssh () {
   print -z "ssh $host"
 
 }
-
-precmd_func() {
-  print -Pn "\e]0;${${PWD}##*/}\a"
-}
-
-preexec_func() {
-  printf "\033]0;%s\a" "${1%% *} | ${${PWD}##*/}"
-}
-
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd precmd_func
-add-zsh-hook preexec preexec_func
