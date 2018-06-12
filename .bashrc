@@ -5,11 +5,7 @@ if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
-source ~/dotfiles/.shrc
+alias ls='ls -la --color=auto'
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
-
-# User specific aliases and functions
-export PATH=${HOME}/.rbenv/bin:${PATH} && \
-
+alias z='zsh'
+alias t='tmux'
