@@ -5,7 +5,7 @@ if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
-alias ls='ls -la --color=auto'
-
 alias z='zsh'
 alias t='tmux'
+
+export PS1="[\u@\h \W]\\$ "
