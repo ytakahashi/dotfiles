@@ -8,6 +8,8 @@ DOT_FILES := \
 .vim/colors/kafka.vim \
 .zshrc \
 .zshenv \
+.bashrc \
+.bash_profile \
 .tmux.conf \
 .gitignore_global \
 .hyper.js
