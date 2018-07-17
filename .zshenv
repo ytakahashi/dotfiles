@@ -23,7 +23,9 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 
 export PIPENV_VENV_IN_PROJECT=true
 
-export PATH=$PATH:"$HOME/.nodebrew/current/bin"
+export PATH=$HOME/.anyenv/bin:$PATH
+
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
