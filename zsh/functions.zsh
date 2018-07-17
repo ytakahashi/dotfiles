@@ -72,6 +72,9 @@ browse() {
   if [ -n "$1" -a "$1" = "." ]; then
     browser=${2:-"Safari"}
     dir=$(ghq list -e ${${$(pwd)/$(git rev-parse --show-cdup)#*/}##*/})
+    if [ $(echo $dir | wc -l) > 1 ]; then
+      dir=$(echo $dir | fzf +m)
+    fi
   else
     browser=${1:-"Safari"}
     dir=$(ghq list | fzf +m)
