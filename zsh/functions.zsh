@@ -65,26 +65,23 @@ fv() {
 # Open browser of ghq-managed git remote repositories.
 ##
 browse() {
-  local dir protocol browser
-  
+  local host protocol browser
+
   protocol="https://"
 
   if [ -n "$1" -a "$1" = "." ]; then
     browser=${2:-"Safari"}
-    dir=$(ghq list -e ${${$(pwd)/$(git rev-parse --show-cdup)#*/}##*/})
-    if [ $(echo $dir | wc -l) > 1 ]; then
-      dir=$(echo $dir | fzf +m)
-    fi
+    host=$(echo $(git rev-parse --show-toplevel) | sed -e "s:$(ghq root)/::")
   else
     browser=${1:-"Safari"}
-    dir=$(ghq list | fzf +m)
+    host=$(ghq list | fzf +m)
   fi
 
-  if [[ -z "$dir" ]]; then
+  if [[ -z "$host" ]]; then
       return 0
   fi
 
-  open -a $browser $protocol$dir
+  open -a $browser $protocol$host
 
 }
 
