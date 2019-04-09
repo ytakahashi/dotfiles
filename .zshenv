@@ -1,5 +1,6 @@
 
 export PATH=/usr/local:$PATH
+export PATH=~/.local/bin:$PATH
 export LANG=ja_JP.UTF-8
 
 if [[ -s "/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home" ]]; then
