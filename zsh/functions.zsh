@@ -42,6 +42,16 @@ h() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 }
 
+lsa() {
+  local res=$(find . -maxdepth 1 -mindepth 1 -type d | awk -F'[/]' '{print $2}')
+  local ary=(`echo $res`)
+  for i in ${ary[@]}; do
+    echo $PWD/$i
+    ls -la $i
+    echo "\n"
+  done
+}
+
 ##
 # vim
 ##
