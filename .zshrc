@@ -15,16 +15,6 @@ setopt correct
 autoload -Uz colors
 colors
 
-# pyenv
-if type pyenv > /dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-# rbenv
-if type rbenv > /dev/null 2>&1; then
-  eval "$(rbenv init -)"
-fi 
-
 # anyenv
 if type anyenv > /dev/null 2>&1; then
   eval "$(anyenv init -)"
@@ -50,12 +40,10 @@ zstyle ':completion:*' list-colors "${LS_COLORS}"
 setopt list_types
 bindkey "^[[Z" reverse-menu-complete
 
-
 # change directory
 setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
-
 
 # history
 HISTFILE=~/.zsh_history
@@ -65,12 +53,10 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt share_history
 
-
 # prompt (left)
 PROMPT="
 %{${fg[white]}%}[%n@%m %2~]
 %# %{${reset_color}%}"
-
 
 # prompt (right)
 autoload -Uz vcs_info
@@ -82,5 +68,3 @@ zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 RPROMPT='${vcs_info_msg_0_}'
-
-
