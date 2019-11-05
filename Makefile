@@ -4,15 +4,16 @@ LIGHT_MAGENDA := \033[95;1m
 COLOR_OFF := \033[m
 
 DOT_FILES := \
-.vimrc \
-.vim/colors/kafka.vim \
-.zshrc \
-.zshenv \
-.bashrc \
 .bash_profile \
-.tmux.conf \
+.bashrc \
+.editorconfig \
 .gitignore_global \
-.hyper.js
+.hyper.js \
+.tmux.conf \
+.vim/colors/kafka.vim \
+.vimrc \
+.zshenv \
+.zshrc
 
 PUGIN_MANAGER := \
 neobundle \
@@ -50,4 +51,3 @@ list: ## show dotfiles and plugin managers to be deployed/installed
 help: ## show how to use
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 	| awk 'BEGIN {FS = ":.*?## "}; {printf "$(LIGHT_CYAN)%-9s$(COLOR_OFF):  %s\n", $$1, $$2}'
-
