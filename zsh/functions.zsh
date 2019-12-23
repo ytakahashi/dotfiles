@@ -166,9 +166,9 @@ fd() {
 fssh () {
   local host
   host=$(
-    grep "Host " ~/.ssh/config | 
-    grep -v '*' | 
-    awk {'print $2'} | 
+    grep "Host " ~/.ssh/config |
+    grep -v '*' |
+    awk {'print $2'} |
     fzf +m
   )
 
@@ -177,5 +177,22 @@ fssh () {
   fi
 
   print -z "ssh $host"
+}
 
+get_session_token () {
+  local result
+  result=$(aws sts get-session-token --serial-number $1 --token-code $2)
+  if [ $? -gt 0 ]; then
+    return 1
+  fi
+
+  local key=$(echo $result | jq '.Credentials' | jq -r '.AccessKeyId')
+  local secret=$(echo $result | jq '.Credentials' | jq -r '.SecretAccessKey')
+  local token=$(echo $result | jq '.Credentials' | jq -r '.SessionToken')
+  local expiration=$(echo $result | jq '.Credentials' | jq -r '.Expiration')
+
+  printf 'expiration = %s\n' $=expiration
+  printf 'aws_access_key_id = %s\n' $=key
+  printf 'aws_secret_access_key = %s\n' $=secret
+  printf 'aws_session_token = %s\n' $=token
 }
