@@ -14,6 +14,13 @@ alias sudo='sudo '
 
 alias gget='ghq get'
 
+# https://github.com/maxogden/maintenance-modules#maintenance-bash-scripts
+alias pre-version='git diff --exit-code && npm prune && npm install -q && npm test'
+alias post-version='npm run --if-present build && git diff --exit-code && git push && git push --tags && npm publish'
+alias npm_patch='pre-version && npm version patch && post-version'
+alias npm_minor='pre-version && npm version minor && post-version'
+alias npm_major='pre-version && npm version major && post-version'
+
 # OS specific
 case ${OSTYPE} in
   darwin*)
