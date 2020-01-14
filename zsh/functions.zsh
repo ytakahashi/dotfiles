@@ -196,3 +196,23 @@ get_session_token () {
   printf 'aws_secret_access_key = %s\n' $=secret
   printf 'aws_session_token = %s\n' $=token
 }
+
+get-private-ip () {
+  aws ec2 describe-instances --profile $3 --region $4 --instance-ids $(aws ecs describe-container-instances --profile $3 --region $4 --cluster $1 --container-instances $(aws ecs describe-tasks --profile $3 --region $4 --cluster $1 --tasks $(aws ecs --profile $3 --region $4 list-tasks --cluster $1 --service-name $2 | jq -r '.taskArns[]') | jq -r '.tasks[].containerInstanceArn') | jq -r '.containerInstances[].ec2InstanceId') | jq -r '.Reservations[].Instances[].PrivateIpAddress'
+}
+
+get-service-name () {
+  aws ecs list-services --profile $2 --region $3 --cluster $1 | jq -r '.serviceArns[]' | awk -F "/" '{print $NF}' | fzf
+}
+
+get-cluster-name () {
+  aws ecs list-clusters --profile $1 --region $2 | jq -r '.clusterArns[]' | awk -F "/" '{print $NF}' | fzf
+}
+
+get-container-instance-private-ip () {
+  local profile=$1
+  local region=$2
+  local cluster=$(get-cluster-name ${profile} ${region})
+  local service=$(get-service-name ${cluster} ${profile} ${region})
+  get-private-ip ${cluster} ${service} ${profile} ${region}
+}
