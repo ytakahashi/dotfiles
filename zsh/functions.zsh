@@ -212,7 +212,10 @@ get-cluster-name () {
 get-container-instance-private-ip () {
   local profile=$1
   local region=$2
-  local cluster=$(get-cluster-name ${profile} ${region})
-  local service=$(get-service-name ${cluster} ${profile} ${region})
-  get-private-ip ${cluster} ${service} ${profile} ${region}
+  local cluster=$(get-cluster-name $profile $region)
+  printf "ECS Cluster Name: %s\n" $cluster
+  local service=$(get-service-name $cluster $profile $region)
+  printf "ECS Service Name: %s\n" $service
+  local ip=$(get-private-ip $cluster $service $profile $region)
+  printf "Private IP (Container Instance): %s\n" $ip
 }
