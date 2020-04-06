@@ -219,3 +219,18 @@ get-container-instance-private-ip () {
   local ip=$(get-private-ip $cluster $service $profile $region)
   printf "Private IP (Container Instance): %s\n" $ip
 }
+
+aws-profiles () {
+  local credential_file=~/.aws/credentials
+  local profiles=()
+
+  while read line; do
+    if [[ $line =~ "\[(.*)\]" ]]; then
+      profiles+=(${match[1]})
+    fi
+  done < $credential_file
+
+  for i in $profiles; do
+    echo $i
+  done
+}
