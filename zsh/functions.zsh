@@ -179,6 +179,9 @@ fssh () {
   print -z "ssh $host"
 }
 
+##
+# shows aws one-time credential
+##
 get_session_token () {
   local result
   result=$(aws sts get-session-token --serial-number $1 --token-code $2)
@@ -197,25 +200,58 @@ get_session_token () {
   printf 'aws_session_token = %s\n' $=token
 }
 
-get-private-ip () {
-  aws ec2 describe-instances --profile $3 --region $4 --instance-ids $(aws ecs describe-container-instances --profile $3 --region $4 --cluster $1 --container-instances $(aws ecs describe-tasks --profile $3 --region $4 --cluster $1 --tasks $(aws ecs --profile $3 --region $4 list-tasks --cluster $1 --service-name $2 | jq -r '.taskArns[]') | jq -r '.tasks[].containerInstanceArn') | jq -r '.containerInstances[].ec2InstanceId') | jq -r '.Reservations[].Instances[].PrivateIpAddress'
+##
+# shows profile list set in ~/.aws/credentials
+##
+aws_profiles() {
+  local credential_file=~/.aws/credentials
+  local profiles=()
+
+  while read line; do
+    if [[ $line =~ "\[(.*)\]" ]]; then
+      profiles+=(${match[1]})
+    fi
+  done < $credential_file
+
+  for i in $profiles; do
+    echo $i
+  done
 }
 
-get-service-name () {
-  aws ecs list-services --profile $2 --region $3 --cluster $1 | jq -r '.serviceArns[]' | awk -F "/" '{print $NF}' | fzf
+get_private_ip() {
+  aws ec2 describe-instances --profile $3 --instance-ids $(aws ecs describe-container-instances --profile $3 --cluster $1 --container-instances $(aws ecs describe-tasks --profile $3 --cluster $1 --tasks $(aws ecs list-tasks --profile $3 --cluster $1 --service-name $2 | jq -r '.taskArns[]') | jq -r '.tasks[].containerInstanceArn') | jq -r '.containerInstances[].ec2InstanceId') | jq -r '.Reservations[].Instances[].PrivateIpAddress'
 }
 
-get-cluster-name () {
-  aws ecs list-clusters --profile $1 --region $2 | jq -r '.clusterArns[]' | awk -F "/" '{print $NF}' | fzf
+get_service_name() {
+  aws ecs list-services --profile $2 --cluster $1 | jq -r '.serviceArns[]' | awk -F "/" '{print $NF}' | fzf
 }
 
-get-container-instance-private-ip () {
-  local profile=$1
-  local region=$2
-  local cluster=$(get-cluster-name $profile $region)
+get_cluster_name() {
+  aws ecs list-clusters --profile $1 | jq -r '.clusterArns[]' | awk -F "/" '{print $NF}' | fzf
+}
+
+##
+# shows procate ip address of ecs container instance
+##
+get_container_instance_private_ip () {
+  local profile=$(aws_profiles | fzf)
+  if [[ -z $profile ]]; then
+    return 0;
+  fi
+  printf "AWS Profile: %s\n" $profile
+
+  local cluster=$(get_cluster_name $profile)
+  if [[ -z $cluster ]]; then
+    return 0;
+  fi
   printf "ECS Cluster Name: %s\n" $cluster
-  local service=$(get-service-name $cluster $profile $region)
+
+  local service=$(get_service_name $cluster $profile)
+  if [[ -z $service ]]; then
+    return 0;
+  fi
   printf "ECS Service Name: %s\n" $service
-  local ip=$(get-private-ip $cluster $service $profile $region)
+
+  local ip=$(get_private_ip $cluster $service $profile)
   printf "Private IP (Container Instance): %s\n" $ip
 }
