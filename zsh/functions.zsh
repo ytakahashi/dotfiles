@@ -254,7 +254,7 @@ get_container_instance_private_ip () {
 
   local ip=$(get_private_ip $cluster $service $profile)
   printf "Private IP (Container Instances):\n"
-  echo $ip | awk '{ printf "- %s/n", $0 }'
+  echo $ip | awk '{ printf "- %s\n", $0 }'
 
   local region=$(aws configure get region --profile $profile)
   printf "\nhttps://%s.console.aws.amazon.com/ecs/home?region=%s#/clusters/%s/services/%s/details\n" $region $region $cluster $service
