@@ -78,21 +78,37 @@ browse() {
   local host protocol browser
 
   protocol="https://"
-
-  if [ -n "$1" -a "$1" = "." ]; then
-    browser=${2:-"Safari"}
-    host=$(echo $(git rev-parse --show-toplevel) | sed -e "s:$(ghq root)/::")
-  else
-    browser=${1:-"Safari"}
-    host=$(ghq list | fzf +m)
-  fi
+  browser=${1:-"Google Chrome"}
+  host=$(ghq list | fzf +m)
 
   if [[ -z "$host" ]]; then
       return 0
   fi
 
   open -a $browser $protocol$host
+}
 
+##
+# Open remote repository of ghq-managed or go src git repositories.
+##
+open_remote() {
+  local host protocol browser ghq_root go_src
+  protocol="https://"
+  browser=${1:-"Google Chrome"}
+
+  ghq_root=$(ghq root)
+  go_src=$(echo $GOPATH/src)
+
+  if [[ $PWD == *$ghq_root* ]]; then
+    host=$(echo $(git rev-parse --show-toplevel) | sed -e "s:$ghq_root/::")
+  elif [[ $PWD == *$go_src* ]]; then
+    host=$(echo $(git rev-parse --show-toplevel) | sed -e "s:$go_src/::")
+  else
+    echo "Cannot open."
+    return 0
+  fi
+
+  open -a $browser $protocol$host
 }
 
 ##
