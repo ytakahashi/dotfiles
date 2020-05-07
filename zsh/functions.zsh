@@ -78,21 +78,37 @@ browse() {
   local host protocol browser
 
   protocol="https://"
-
-  if [ -n "$1" -a "$1" = "." ]; then
-    browser=${2:-"Safari"}
-    host=$(echo $(git rev-parse --show-toplevel) | sed -e "s:$(ghq root)/::")
-  else
-    browser=${1:-"Safari"}
-    host=$(ghq list | fzf +m)
-  fi
+  browser=${1:-"Google Chrome"}
+  host=$(ghq list | fzf +m)
 
   if [[ -z "$host" ]]; then
       return 0
   fi
 
   open -a $browser $protocol$host
+}
 
+##
+# Open remote repository of ghq-managed or go src git repositories.
+##
+open_remote() {
+  local host protocol browser ghq_root go_src
+  protocol="https://"
+  browser=${1:-"Google Chrome"}
+
+  ghq_root=$(ghq root)
+  go_src=$(echo $GOPATH/src)
+
+  if [[ $PWD == *$ghq_root* ]]; then
+    host=$(echo $(git rev-parse --show-toplevel) | sed -e "s:$ghq_root/::")
+  elif [[ $PWD == *$go_src* ]]; then
+    host=$(echo $(git rev-parse --show-toplevel) | sed -e "s:$go_src/::")
+  else
+    echo "Cannot open."
+    return 0
+  fi
+
+  open -a $browser $protocol$host
 }
 
 ##
@@ -244,14 +260,18 @@ get_container_instance_private_ip () {
   if [[ -z $cluster ]]; then
     return 0;
   fi
-  printf "ECS Cluster Name: %s\n" $cluster
+  printf "ECS Cluster: %s\n" $cluster
 
   local service=$(get_service_name $cluster $profile)
   if [[ -z $service ]]; then
     return 0;
   fi
-  printf "ECS Service Name: %s\n" $service
+  printf "ECS Service: %s\n" $service
 
   local ip=$(get_private_ip $cluster $service $profile)
-  printf "Private IP (Container Instance): %s\n" $ip
+  printf "Private IP (Container Instances):\n"
+  echo $ip | awk '{ printf "- %s\n", $0 }'
+
+  local region=$(aws configure get region --profile $profile)
+  printf "\nhttps://%s.console.aws.amazon.com/ecs/home?region=%s#/clusters/%s/services/%s/details\n" $region $region $cluster $service
 }
