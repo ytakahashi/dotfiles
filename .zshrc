@@ -2,6 +2,7 @@
 
 source ~/dotfiles/zsh/aliases.zsh
 source ~/dotfiles/zsh/functions.zsh
+source ~/dotfiles/zsh/languages.zsh
 source ~/dotfiles/zsh/zplug.zsh
 source ~/dotfiles/zsh/miscs.zsh
 
@@ -14,16 +15,6 @@ setopt correct
 
 autoload -Uz colors
 colors
-
-# anyenv
-if type anyenv > /dev/null 2>&1; then
-  eval "$(anyenv init -)"
-fi 
-
-# sdkman
-if [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
-  source "$SDKMAN_DIR/bin/sdkman-init.sh"
-fi
 
 # completion
 autoload -U compinit; compinit
