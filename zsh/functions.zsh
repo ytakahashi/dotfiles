@@ -275,3 +275,27 @@ get_container_instance_private_ip () {
   local region=$(aws configure get region --profile $profile)
   printf "\nhttps://%s.console.aws.amazon.com/ecs/home?region=%s#/clusters/%s/services/%s/details\n" $region $region $cluster $service
 }
+
+##
+# shows record names registered in aws route53
+##
+list_route53_record_names () {
+  local profile=$(aws_profiles | fzf)
+  if [[ -z $profile ]]; then
+    return 0;
+  fi
+  printf "AWS Profile: %s\n" $profile
+
+  local hosted_zones=$(aws route53 list-hosted-zones --profile $profile | jq '.HostedZones[]')
+  local zone_name=$(echo $hosted_zones | jq -r .Name | fzf)
+  if [[ -z $zone_name ]]; then
+    return 0;
+  fi
+  local zone_record=$(echo $hosted_zones | jq --arg name $zone_name 'select(.Name == $name)')
+  local zone_id=$(echo $zone_record | jq -r '.Id')
+
+  printf "Zone: %s (ID: %s)\n" $zone_name $zone_id
+  local records=$(aws route53 list-resource-record-sets --profile $profile --hosted-zone-id $zone_id | jq '.ResourceRecordSets[]')
+  local record_name=$(echo $records | jq -r '.Name' | fzf)
+  echo $records | jq --arg name $record_name 'select(.Name == $name)'
+}
