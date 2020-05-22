@@ -295,5 +295,7 @@ list_route53_record_names () {
   local zone_id=$(echo $zone_record | jq -r '.Id')
 
   printf "Zone: %s (ID: %s)\n" $zone_name $zone_id
-  aws route53 list-resource-record-sets --profile $profile --hosted-zone-id $zone_id | jq -r '.ResourceRecordSets[].Name' | fzf
+  local records=$(aws route53 list-resource-record-sets --profile $profile --hosted-zone-id $zone_id | jq '.ResourceRecordSets[]')
+  local record_name=$(echo $records | jq -r '.Name' | fzf)
+  echo $records | jq --arg name $record_name 'select(.Name == $name)'
 }
