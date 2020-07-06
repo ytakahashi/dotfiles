@@ -21,7 +21,7 @@
   upload-head = push origin HEAD
 
 [color]
-	ui = auto
+  ui = auto
 
 [core]
   autocrlf = input
