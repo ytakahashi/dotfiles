@@ -1,0 +1,39 @@
+[include]
+  path = ~/.gitconfig.local
+
+[alias]
+  alias = config --get-regexp 'alias'
+  amend = commit --amend
+  append = commit --amend --no-edit
+  branches = branch -a -vv
+  clean-all = !git reset --hard HEAD && git clean -d -f
+  create-branch = !read -p 'new branch name: ' branch && git switch -c $branch
+  create-tag = !read -p 'tag name: ' t && tag --annotate $t
+  develop = !git switch develop && git fetch -p && git merge origin/develop
+  last = log --pretty=fuller -1 HEAD
+  log-full = log --pretty=fuller
+  log-graph = log --graph --date=short --decorate=short --pretty=format:'%C(yellow)%h %cd %Creset-- %Cgreen%an %Cred%d %Creset%s'
+  master = !git switch master && git fetch -p && git merge origin/master
+  root = rev-parse --show-toplevel
+  save = stash save -u
+  summary = status -uall -s
+  uncommit = reset --soft HEAD^
+  upload-head = push origin HEAD
+
+[color]
+  ui = auto
+
+[core]
+  autocrlf = input
+  editor = vim
+  excludesfile = ~/.gitignore_global
+  ignorecase = false
+
+[diff]
+  compactionHeuristic = true
+
+[ghq]
+  root = ~/ghq
+
+[push]
+  default = simple
