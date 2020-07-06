@@ -7,6 +7,7 @@ DOT_FILES := \
 .bash_profile \
 .bashrc \
 .editorconfig \
+.gitconfig \
 .gitignore_global \
 .hyper.js \
 .tmux.conf \
