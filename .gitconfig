@@ -8,7 +8,10 @@
   branches = branch -a -vv
   clean-all = !git reset --hard HEAD && git clean -d -f
   create-branch = !read -p 'new branch name: ' branch && git switch -c $branch
-  create-tag = !read -p 'tag name: ' t && tag --annotate $t
+  create-tag = !read -p 'tag name: ' t && git tag --annotate $t
+  create-tag-remote = !read -p 'tag name: ' t && git tag --annotate $t && git push origin ${t}
+  delete-tag = !read -p 'tag name: ' t && git tag --delete $t
+  delete-tag-remote = !read -p 'tag name: ' t && git tag --delete $t && git push origin :refs/tags/${t}
   develop = !git switch develop && git fetch -p && git merge origin/develop
   last = log --pretty=fuller -1 HEAD
   log-full = log --pretty=fuller
