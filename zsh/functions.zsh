@@ -112,6 +112,36 @@ open_remote() {
 }
 
 ##
+# Open tag diff page with browser.
+##
+git_open_tag_diff() {
+  local diff=$(git tag | fzf -m 2 --print0 | tr '\000' ' ' | sed -e 's/ $//' -e 's/ /.../g')
+  echo "$(remote_repository_url)/compare/$diff"
+  open -a ${1:-"Google Chrome"} "$(remote_repository_url)/compare/$diff"
+}
+
+##
+# Shows url of remote repository of ghq-managed or go src git repositories.
+##
+remote_repository_url() {
+  local host ghq_root go_src
+
+  ghq_root=$(ghq root)
+  go_src=$(echo $GOPATH/src)
+
+  if [[ $PWD == *$ghq_root* ]]; then
+    host=$(echo $(git rev-parse --show-toplevel) | sed -e "s:$ghq_root/::")
+  elif [[ $PWD == *$go_src* ]]; then
+    host=$(echo $(git rev-parse --show-toplevel) | sed -e "s:$go_src/::")
+  else
+    echo "Cannot open."
+    return 0
+  fi
+
+  echo "https://$host"
+}
+
+##
 # interactive cd to ghq-managed git local repositories.
 ##
 gd() {
