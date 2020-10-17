@@ -115,13 +115,9 @@ open_remote() {
 # Open tag diff page with browser.
 ##
 git_open_tag_diff() {
-  local browser diff url
-  browser=${1:-"Google Chrome"}
-  diff=$(git tag | fzf -m 2 --print0 | tr '\000' ' ' | sed -e 's/ $//' -e 's/ /.../g')
-  url=$(remote_repository_url)
-
-  echo "$url/compare/$diff"
-  open -a $browser "$url/compare/$diff"
+  local diff=$(git tag | fzf -m 2 --print0 | tr '\000' ' ' | sed -e 's/ $//' -e 's/ /.../g')
+  echo "$(remote_repository_url)/compare/$diff"
+  open -a ${1:-"Google Chrome"} "$(remote_repository_url)/compare/$diff"
 }
 
 ##
