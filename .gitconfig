@@ -16,6 +16,7 @@
   last = log --pretty=fuller -1 HEAD
   log-full = log --pretty=fuller
   log-graph = log --graph --date=short --decorate=short --pretty=format:'%C(yellow)%h %cd %Creset-- %Cgreen%an %Cred%d %Creset%s'
+  main = !git switch main && git fetch -p && git merge origin/main
   master = !git switch master && git fetch -p && git merge origin/master
   root = rev-parse --show-toplevel
   save = stash save -u
