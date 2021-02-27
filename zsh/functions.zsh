@@ -329,3 +329,74 @@ list_route53_record_names () {
   local record_name=$(echo $records | jq -r '.Name' | fzf)
   echo $records | jq --arg name $record_name 'select(.Name == $name)'
 }
+
+function imdfind () {
+  MDF_PREFIX="mdfind -onlyin $PWD "
+  local result=$(FZF_DEFAULT_COMMAND=" find $PWD -type f" \
+    fzf --bind "change:reload:$MDF_PREFIX {q}" \
+        --ansi --phony --preview 'cat {}')
+  echo $result
+}
+
+function irg () {
+  RG_PREFIX="rg --no-heading --line-number --color=always --smart-case "
+  local result=$(FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
+    fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+        --ansi --phony)
+
+  echo ${result%%:*}
+}
+
+function __image_name() {
+  local image=$(docker image ls | fzf)
+  local name=$(echo $image | awk '{print $1}')
+
+  echo $name
+}
+
+function __image_id() {
+  local image=$(docker image ls | fzf)
+  local image_id=$(echo $image | awk '{print $3}')
+
+  echo $image_id
+}
+
+function __container_id() {
+  local container=$(docker container ls -a | fzf)
+  local container_id=$(echo $container | awk '{print $1}')
+
+  echo $container_id
+}
+
+function idocker() {
+  local run_container="run_container"
+  local stop_container="stop_container"
+  local remove_container="remove_container"
+  local remove_image="remove_image"
+  local opt=$(printf "${run_container}\n${stop_container}\n${remove_container}\n${remove_image}" | fzf)
+
+  case $opt in
+    $run_container)
+      local image=$(__image_name)
+      local option="-itd"
+      vared -p "Option (e.g., -it -p 8080:80 --rm): " option
+      read "name?Container Name: "
+      print -z "docker run $option --name $name $image"
+      ;;
+    $stop_container)
+      local container=$(__container_id)
+      print -z "docker container stop $container"
+      ;;
+    $remove_container)
+      local container=$(__container_id)
+      print -z "docker container rm $container"
+      ;;
+    $remove_image)
+      local image=$(__image_id)
+      print -z "docker image rm $image"
+      ;;
+    *)
+      echo "command failed"
+      return 1
+  esac
+}

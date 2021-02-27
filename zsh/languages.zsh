@@ -14,8 +14,14 @@ export MAVEN_OPTS="-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.a
 
 # anyenv
 export PATH=$HOME/.anyenv/bin:$PATH
-if type anyenv > /dev/null 2>&1; then
-  eval "$(anyenv init -)"
+function anyenv_init() {
+  anyenv init -  > ~/.anyenv-init.sh
+}
+if [ -f ~/.anyenv-init.sh ]; then
+  source ~/.anyenv-init.sh
+else
+  anyenv_init
+  source ~/.anyenv-init.sh
 fi
 
 # *envs
