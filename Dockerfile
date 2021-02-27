@@ -1,28 +1,24 @@
-FROM centos:7
+FROM alpine:latest
 
 LABEL description="Dockerfile for dofiles"
 LABEL maintainer="ytakahashi"
 
-RUN localedef -f UTF-8 -i en_US en_US.UTF-8
-ENV \
-  LANG="en_US.UTF-8" \
-  LANGUAGE="en_US:en" \
-  LC_ALL="en_US.UTF-8"
-
-RUN yum -y update && \
-  yum -y install \
+RUN apk update && \
+  apk upgrade && \
+  apk add --no-cache \
   git \
+  bash \
   zsh \
-  vim \
-  make && \
-  yum clean all
+  zsh-vcs \
+  make \
+  ncurses
 
-RUN curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+WORKDIR /root/dotfiles
 
-RUN \
-  git clone https://github.com/ytakahashi/dotfiles.git ~/dotfiles && \
-  cd ~/dotfiles && \
-  make clean && \
-  make dotfiles
+COPY . .
+
+ENV TERM=xterm-256color
+
+RUN make dotfiles
 
 CMD zsh

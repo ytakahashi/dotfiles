@@ -19,7 +19,7 @@ function anyenv_init() {
 }
 if [ -f ~/.anyenv-init.sh ]; then
   source ~/.anyenv-init.sh
-else
+elif type anyenv > /dev/null 2>&1; then
   anyenv_init
   source ~/.anyenv-init.sh
 fi

@@ -14,12 +14,13 @@ home_neobundle() {
   echo ${HOME}/.vim/bundle/neobundle.vim
 }
 
-install_zplug() {
-  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+install_zinit() {
+  mkdir ~/.zinit
+  git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
 }
 
-home_zplug() {
-  echo "${HOME}/.zplug"
+home_zinit() {
+  echo "${HOME}/.zinit/bin"
 }
 
 echo ""

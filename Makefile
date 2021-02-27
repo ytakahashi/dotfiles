@@ -18,7 +18,7 @@ DOT_FILES := \
 
 PUGIN_MANAGER := \
 neobundle \
-zplug
+zinit
 
 .DEFAULT_GOAL := help
 
