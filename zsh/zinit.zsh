@@ -9,6 +9,6 @@ zinit wait lucid for \
     zsh-users/zsh-autosuggestions \
 
 zinit ice from"gh-r" as"program"
-zinit load junegunn/fzf-bin
-zinit load b4b4r07/enhancd
-zinit load ytakahashi/igit
+zinit light junegunn/fzf-bin
+zinit light b4b4r07/enhancd
+zinit light ytakahashi/igit
