@@ -4,11 +4,11 @@ autoload -Uz _zinit
 
 zinit wait lucid for \
  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma/fast-syntax-highlighting \
+    zdharma-continuum/fast-syntax-highlighting \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions \
 
 zinit ice from"gh-r" as"program"
-zinit load junegunn/fzf-bin
-zinit load b4b4r07/enhancd
-zinit load ytakahashi/igit
+zinit light junegunn/fzf-bin
+zinit light b4b4r07/enhancd
+zinit light ytakahashi/igit
