@@ -7,7 +7,7 @@ count_changed=0
 
 install_neobundle () {
   mkdir -p ~/.vim/bundle
-  git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+  git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 }
 
 home_neobundle() {
