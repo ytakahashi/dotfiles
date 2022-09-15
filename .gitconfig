@@ -6,6 +6,7 @@
   amend = commit --amend
   append = commit --amend --no-edit
   branches = branch -a -vv
+  changelog = !git log $(git describe --abbrev=0)...$(git rev-parse --abbrev-ref HEAD) --pretty=format:'- %s'
   clean-all = !git reset --hard HEAD && git clean -d -f
   create-branch = !read -p 'new branch name: ' branch && git switch -c $branch
   create-tag = !read -p 'tag name: ' t && git tag --annotate $t
@@ -21,6 +22,8 @@
   root = rev-parse --show-toplevel
   save = stash save -u
   summary = status -uall -s
+  tags = tag -l --format='%(refname:strip=2)\t%(taggerdate:format:%Y-%m-%d_%H:%M:%S)' --sort=-taggerdate
+  unadd = reset HEAD
   uncommit = reset --soft HEAD^
   upload-head = push origin HEAD
 
