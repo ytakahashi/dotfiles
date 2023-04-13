@@ -44,12 +44,7 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt share_history
 
-# prompt (left)
-PROMPT="
-%{${fg[white]}%}[%n@%m %2~]
-%# %{${reset_color}%}"
-
-# prompt (right)
+# prompt
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:git:*' check-for-changes true
@@ -58,4 +53,7 @@ zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
-RPROMPT='${vcs_info_msg_0_}'
+PROMPT='
+${vcs_info_msg_0_}
+%{${fg[white]}%}[%n@%m %2~]
+%# %{${reset_color}%}'
