@@ -89,6 +89,17 @@ browse() {
 }
 
 ##
+# Open file in browser
+##
+browse_file() {
+  local file=$(git ls-tree-all | fzf)
+  if [[ -z "$file" ]]; then
+    return 0
+  fi
+  open -a "Google Chrome" $(remote_repository_url)/blob/$(git hash)/$file
+}
+
+##
 # Open remote repository of ghq-managed or go src git repositories.
 ##
 open_remote() {
