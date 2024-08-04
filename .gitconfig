@@ -6,6 +6,8 @@
   amend = commit --amend
   append = commit --amend --no-edit
   branches = branch -a -vv
+  browse-file = !zsh -ic browse_file
+  browse-repository = !zsh -ic open_remote
   changelog = !git log $(git describe --abbrev=0)...$(git rev-parse --abbrev-ref HEAD) --pretty=format:'- %s'
   clean-all = !git reset --hard HEAD && git clean -d -f
   create-branch = !read -p 'new branch name: ' branch && git switch -c $branch
@@ -14,9 +16,11 @@
   delete-tag = !read -p 'tag name: ' t && git tag --delete $t
   delete-tag-remote = !read -p 'tag name: ' t && git tag --delete $t && git push origin :refs/tags/${t}
   develop = !git switch develop && git fetch -p && git merge origin/develop
+  hash = show --format='%H' --no-patch
   last = log --pretty=fuller -1 HEAD
   log-full = log --pretty=fuller
   log-graph = log --graph --date=short --decorate=short --pretty=format:'%C(yellow)%h %cd %Creset-- %Cgreen%an %Cred%d %Creset%s'
+  ls-tree-all = ls-tree -r --name-only --full-name HEAD
   main = !git switch main && git fetch -p && git merge origin/main
   master = !git switch master && git fetch -p && git merge origin/master
   root = rev-parse --show-toplevel
