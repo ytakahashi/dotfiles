@@ -55,5 +55,5 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 PROMPT='
 ${vcs_info_msg_0_}
-%{${fg[white]}%}[%n@%m %2~]
+%{${fg[white]}%}[%F{190}%n%f@%F{195}%m%f %2~]
 %# %{${reset_color}%}'
