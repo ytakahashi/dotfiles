@@ -13,6 +13,8 @@
   create-branch = !read -p 'new branch name: ' branch && git switch -c $branch
   create-tag = !read -p 'tag name: ' t && git tag --annotate $t
   create-tag-remote = !read -p 'tag name: ' t && git tag --annotate $t && git push origin ${t}
+  create-signed-tag = !read -p 'tag name: ' t && git tag -s $t
+  create-signed-tag-remote = !read -p 'tag name: ' t && git tag -s $t && git push origin ${t}
   delete-tag = !read -p 'tag name: ' t && git tag --delete $t
   delete-tag-remote = !read -p 'tag name: ' t && git tag --delete $t && git push origin :refs/tags/${t}
   develop = !git switch develop && git fetch -p && git merge origin/develop
