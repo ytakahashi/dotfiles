@@ -57,3 +57,5 @@ PROMPT='
 ${vcs_info_msg_0_}
 %{${fg[white]}%}[%F{190}%n%f@%F{195}%m%f %2~]
 %# %{${reset_color}%}'
+
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
