@@ -2,7 +2,7 @@
 
 source ~/dotfiles/zsh/aliases.zsh
 source ~/dotfiles/zsh/functions.zsh
-source ~/dotfiles/zsh/languages.zsh
+source ~/dotfiles/zsh/tools.zsh
 source ~/dotfiles/zsh/zinit.zsh
 source ~/dotfiles/zsh/miscs.zsh
 

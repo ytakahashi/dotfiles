@@ -41,3 +41,13 @@ fi
 # Deno
 export DENO_INSTALL=$HOME/.deno
 export PATH=$DENO_INSTALL/bin:$PATH
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH=~/.bun/bin/bun:$PATH
+# bun completions
+[ -s "~/.bun/_bun" ] && source "~/.bun/_bun"
+
+# Antigravity
+export PATH="~/.antigravity/antigravity/bin:$PATH"
