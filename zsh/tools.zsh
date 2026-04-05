@@ -49,5 +49,19 @@ export PATH=~/.bun/bin/bun:$PATH
 # bun completions
 [ -s "~/.bun/_bun" ] && source "~/.bun/_bun"
 
+# gh completions
+if type gh > /dev/null 2>&1; then
+  eval "$(gh completion -s zsh)"
+fi
+
+
 # Antigravity
-export PATH="~/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
