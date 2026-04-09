@@ -1,8 +1,10 @@
 # .zshrc
 
+autoload -U compinit; compinit
+
 source ~/dotfiles/zsh/aliases.zsh
 source ~/dotfiles/zsh/functions.zsh
-source ~/dotfiles/zsh/languages.zsh
+source ~/dotfiles/zsh/tools.zsh
 source ~/dotfiles/zsh/zinit.zsh
 source ~/dotfiles/zsh/miscs.zsh
 
@@ -17,7 +19,6 @@ autoload -Uz colors
 colors
 
 # completion
-autoload -U compinit; compinit
 zstyle ':completion:*:default' menu select=1
 bindkey '^r' history-incremental-pattern-search-backward
 bindkey '^s' history-incremental-pattern-search-forward
@@ -57,3 +58,5 @@ PROMPT='
 ${vcs_info_msg_0_}
 %{${fg[white]}%}[%F{190}%n%f@%F{195}%m%f %2~]
 %# %{${reset_color}%}'
+
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local

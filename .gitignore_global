@@ -3,3 +3,4 @@
 .idea/
 *venv
 *.iml
+.claude/settings.local.json

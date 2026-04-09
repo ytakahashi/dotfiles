@@ -41,3 +41,29 @@ fi
 # Deno
 export DENO_INSTALL=$HOME/.deno
 export PATH=$DENO_INSTALL/bin:$PATH
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH=~/.bun/bin/bun:$PATH
+# bun completions
+if [ -s "$HOME/.bun/_bun" ]; then
+  fpath=("$HOME/.bun" $fpath)
+fi
+
+# gh completions
+if type gh > /dev/null 2>&1; then
+  eval "$(gh completion -s zsh)"
+fi
+
+
+# Antigravity
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

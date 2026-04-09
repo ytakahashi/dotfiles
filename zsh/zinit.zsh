@@ -3,7 +3,7 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions \
