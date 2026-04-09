@@ -1,5 +1,7 @@
 # .zshrc
 
+autoload -U compinit; compinit
+
 source ~/dotfiles/zsh/aliases.zsh
 source ~/dotfiles/zsh/functions.zsh
 source ~/dotfiles/zsh/tools.zsh
@@ -17,7 +19,6 @@ autoload -Uz colors
 colors
 
 # completion
-autoload -U compinit; compinit
 zstyle ':completion:*:default' menu select=1
 bindkey '^r' history-incremental-pattern-search-backward
 bindkey '^s' history-incremental-pattern-search-forward
