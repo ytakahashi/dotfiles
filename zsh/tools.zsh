@@ -47,7 +47,9 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH=~/.bun/bin/bun:$PATH
 # bun completions
-[ -s "~/.bun/_bun" ] && source "~/.bun/_bun"
+if [ -s "$HOME/.bun/_bun" ]; then
+  fpath=("$HOME/.bun" $fpath)
+fi
 
 # gh completions
 if type gh > /dev/null 2>&1; then
